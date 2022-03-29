@@ -49,3 +49,20 @@ func game(info1:Int,info2:Int){
     }
 }
 game(info1:21,info2:60)
+
+//Test5 fallthrough문 사용하기
+var value = 4
+switch(value) {
+case 4:
+    print("4")
+    fallthrough
+case 3:
+    print("3")
+    fallthrough
+case 2:
+    print("2")
+    fallthrough
+default:
+    print("1")
+}
+
