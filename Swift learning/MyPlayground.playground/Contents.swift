@@ -143,3 +143,12 @@ func calcBMI(몸무게 weight : Double,키 height : Double) -> String{
     }
 }
 print(calcBMI(몸무게: 60.0, 키: 170.0)) //BMI:20.8, 판정 : 정상
+
+//Test10 : 디폴트 매개변수 정의하기
+func sayHello(count: Int, name: String = "길동") -> String{
+    return ("\(name), 너의 번호는\(count)")
+}
+var message1 = sayHello(count: 10, name: "소프트")
+print(message1)
+var message2 = sayHello(count: 100)
+print(message2)
