@@ -66,3 +66,8 @@ default:
     print("1")
 }
 
+//Test6 SWIFT에서의 함수
+func 반환값은정수(A:Int?,B:Int?) -> Int {
+    return A! + B!
+}
+print(반환값은정수(A: 15, B: 17))
