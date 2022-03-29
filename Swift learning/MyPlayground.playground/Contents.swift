@@ -95,3 +95,30 @@ func add(_ x: Int,with y: Int) -> Int{
     return(x+y)
 }
 print(add(x: 10, y: 20))
+
+//Test8 C/C++함수를 Swift함수로 변경
+func ddd(계산할값 x:Int) -> Int{
+    return(x*2)
+}
+func setX(계산할값 x:Int){
+    var xx : Int
+    xx = x
+}
+func getX() -> Int{
+    var x : Int = 10
+    return(x)
+}
+func addd(x:Int,y:Int) -> Int{
+    return(x+y)
+}
+func setXY(x:Int,y:Int){
+    var xx :Int
+    var yy :Int
+    xx = x
+    yy = y
+}
+print(ddd(계산할값: 10))
+print(setX(계산할값: 15))
+print(getX())
+print(addd(x: 15, y: 16))
+print(setXY(x: 15, y: 25))
