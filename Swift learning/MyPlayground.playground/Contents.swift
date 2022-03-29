@@ -1,4 +1,6 @@
 //Test1
+
+import UIKit
 func printName(firstName:String, lastName:String?){
     //if let
     if let lName = lastName { // 옵셔널 변수가 값이 있다면 언래핑
@@ -38,11 +40,11 @@ Testfuc(a: 8)
 func game(info1:Int,info2:Int){
     
     switch (info1){
-    case 0...19 where info2 > 50:
+    case 0..<20 where info2 > 50:
         print("마나는 충분해! 체력은 부족하네?")
-    case 20...60 where info2 > 50:
+    case 20..<60 where info2 > 50:
         print("마나와 체력은 충분해 보이는데?")
-    case 61...100 where info2 > 50:
+    case 60..<100 where info2 > 50:
         print("거의 풀피야!")
     default:
         print("마나가 부족해!")
@@ -122,3 +124,22 @@ print(setX(계산할값: 15))
 print(getX())
 print(addd(x: 15, y: 16))
 print(setXY(x: 15, y: 25))
+
+//Test9 : BMI판정결과를 리턴하는 calcBMI()함수를 정의
+import Foundation
+func calcBMI(몸무게 weight : Double,키 height : Double) -> String{
+    var bmi = weight / (height * height * 0.0001)
+    switch(bmi){
+    case 0..<18.5:
+        return("저체중")
+    case 18.5..<25:
+        return("정상")
+    case 25..<30:
+        return("1단계 비만")
+    case 30..<40:
+        return("2단계 비만")
+    default:
+        return("3단계 비만")
+    }
+}
+print(calcBMI(몸무게: 60.0, 키: 170.0)) //BMI:20.8, 판정 : 정상
