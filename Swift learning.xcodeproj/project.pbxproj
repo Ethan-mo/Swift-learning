@@ -49,6 +49,7 @@
 		AA81E92A27F2980300AFF11B /* Swift learningUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift learningUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA81E92E27F2980300AFF11B /* Swift_learningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_learningUITests.swift; sourceTree = "<group>"; };
 		AA81E93027F2980300AFF11B /* Swift_learningUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_learningUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AA81E93D27F299B700AFF11B /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +107,7 @@
 				AA81E91627F2980200AFF11B /* Assets.xcassets */,
 				AA81E91827F2980200AFF11B /* LaunchScreen.storyboard */,
 				AA81E91B27F2980200AFF11B /* Info.plist */,
+				AA81E93D27F299B700AFF11B /* MyPlayground.playground */,
 			);
 			path = "Swift learning";
 			sourceTree = "<group>";
