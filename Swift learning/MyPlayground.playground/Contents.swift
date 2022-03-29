@@ -71,3 +71,27 @@ func 반환값은정수(A:Int?,B:Int?) -> Int {
     return A! + B!
 }
 print(반환값은정수(A: 15, B: 17))
+print(type(of: 반환값은정수))
+
+//Test7 Swift함수 실습
+//* 일반적인 함수의 모습
+func add(x: Int, y: Int) -> Int {
+    return(x+y)
+}
+print(add(x: 10, y: 20))
+
+//*
+func add(first x: Int,second y: Int) -> Int{
+    return(x+y)
+}
+print(add(x: 10, y: 20))
+
+func add(_ x: Int,_ y: Int) -> Int{
+    return(x+y)
+}
+print(add(x: 10, y: 20))
+
+func add(_ x: Int,with y: Int) -> Int{
+    return(x+y)
+}
+print(add(x: 10, y: 20))
