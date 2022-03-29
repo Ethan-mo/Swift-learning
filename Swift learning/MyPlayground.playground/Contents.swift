@@ -166,3 +166,21 @@ print(lengthTuple)
 print(lengthTuple.yards)
 print(lengthTuple.centimeters)
 print(lengthTuple.meters)
+
+//Test12 : 2개의 정수를 입력받아 가감제 리턴
+func sss(x : Int, y : Int) -> (sum:Int,sub:Int,div:Double,com:Int,na:Int){
+    let sum = x + y
+    let sub = x - y
+    let div = Double(x)/Double(y) // 같은 자료형만 연산 가능
+    
+    //과제
+    let com = x * y
+    let na = x % y
+    return(sum, sub, div, com, na)
+}
+var result = sss(x:10, y:3)
+print(result.sum)
+print(result.sub)
+print(String(format: "%.3f", result.div))
+print(result.com)
+print(result.na)
