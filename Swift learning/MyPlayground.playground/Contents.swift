@@ -152,3 +152,17 @@ var message1 = sayHello(count: 10, name: "소프트")
 print(message1)
 var message2 = sayHello(count: 100)
 print(message2)
+
+//Test11 : 함수로부터 여러 개의 결과 반환하기
+func converter(length: Float) -> (yards: Float, centimeters: Float, meters: Float){
+    let yards = length * 0.0277778
+    let centimeters = length * 2.54
+    let meters = length * 0.0254
+    return (yards, centimeters, meters)
+}
+
+var lengthTuple = converter(length:10) //변수 lengthTuple은 func converter()함수의 리턴값을 불러온다.
+print(lengthTuple)
+print(lengthTuple.yards)
+print(lengthTuple.centimeters)
+print(lengthTuple.meters)
