@@ -76,6 +76,44 @@ class Man{
             return false
         }
     }
+    
+    init(){
+        age = 16
+        weight = 57.5
+    }
 }
 //여기서 age, weight는 저장프로퍼티
 //run은 계산프로퍼티이다.
+
+//Test18_2 : 인스턴스 메서드
+class Human{
+    var age : Int = 27
+    var weight : Double = 57.5
+    func display(){ //이처럼 func 메서드명(){}으로 만드는건 계산프로퍼티, 인스턴스 메서드이다.
+        print("나이 = \(age), 몸무게 = \(weight)")
+    }
+}
+//인스턴트 만들자!
+let Mosang : Human = Human()
+Mosang.display()
+print(Mosang.age)
+
+//Test18_2_2 : 타입메서드(클래스 메서드)
+class Human2{
+    var age : Int = 27
+    var weight : Double = 57.5
+    func display(){ //이처럼 func 메서드명(){}으로 만드는건 계산프로퍼티, 인스턴스 메서드이다.
+        print("나이 = \(age), 몸무게 = \(weight)")
+    }
+    class func cM(){
+        print("cM은 클래스 메서드입니다.")
+    }
+    static func scM(){
+        print("scM은 클래스 메서드(static)입니다.")
+    }
+}
+//인스턴스 만들자!2
+let Ethan = Human()
+Ethan.display()
+Human2.cM() //cM()이나 scM()은 타입메서드(클래스메서드)이기 때문에, 본 클래스명을 붙여준다.
+Human2.scM()
