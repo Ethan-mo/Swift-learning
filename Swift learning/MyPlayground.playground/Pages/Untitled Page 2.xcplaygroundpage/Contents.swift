@@ -117,3 +117,22 @@ let Ethan = Human()
 Ethan.display()
 Human2.cM() //cM()이나 scM()은 타입메서드(클래스메서드)이기 때문에, 본 클래스명을 붙여준다.
 Human2.scM()
+
+//Test19 : 생성자
+//초기화 틀을 만들어주는 것으로, 클래스 내에 init()을 만들어주면, 인스턴스를 만들었을 때, var 인스턴스1 : 클래스 = 클래스()형태는 사용할 수 없다.
+class Human3{
+    var age : Int
+    var weight : Double
+    func display(){
+        print("나의 나이는: \(age)이고, 나의 몸무게는: \(weight)입니다.")
+    }
+    
+    init(나이: Int, 몸무게: Double){
+        age = 나이
+        weight = 몸무게
+    }
+}
+//인스턴스 만들자!3
+var 상현 : Human3 = Human3(나이:62,몸무게:72.4)
+상현.display()
+
