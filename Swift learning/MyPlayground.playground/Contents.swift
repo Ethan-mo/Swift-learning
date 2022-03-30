@@ -184,3 +184,32 @@ print(result.sub)
 print(String(format: "%.3f", result.div))
 print(result.com)
 print(result.na)
+print(type(of: result))
+
+//Test13 : 가변 매개변수
+func displayStrings(문자열들: String...){
+    for 문자열 in 문자열들{
+        print(문자열)
+    }
+}
+
+displayStrings(문자열들: "일", "이", "삼", "사")
+displayStrings(문자열들: "one", "two")
+
+//+ 추가 과제
+func variadicAdd(합할숫자를입력 숫자들: Int...)
+{
+    var sum : Int = 0
+    for i in 숫자들{
+        sum += i
+    }
+    print(sum)
+}
+
+variadicAdd(합할숫자를입력: 1,2,3)
+variadicAdd(합할숫자를입력: 2,2,2,2,2)
+variadicAdd(합할숫자를입력: 1,1,1,1,1,1,1,1,1,1)
+variadicAdd(합할숫자를입력: 1,1,1,1)
+
+
+
