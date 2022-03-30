@@ -161,3 +161,67 @@ class Human4{
 let 모상현 : Human4 = Human4(나이:19,몸무게:52.4)
 모상현.display()
 print(모상현.만나이)
+
+//Test21 : failable initialize가 있는 클래스의 인스턴스 생성
+class Human5{
+    var age : Int
+    var weight : Double
+    func display(){
+        print("나의 나이는\(age),나의 몸무게는\(weight)이다.")
+    }
+    init?(나이 age:Int, 몸무게 weight: Double){
+        if age <= 0{
+            return nil
+        }else{
+            self.age = age
+        }
+        self.weight = weight
+    }
+}
+
+var Kim : Human5? = Human5(나이: 1, 몸무게: 3.5) //옵셔널 형으로 선언
+//옵셔널 타입의 데이터를 언래핑하는 방법 4가지
+
+if let Kim1 = Kim{ // 옵셔널 바인딩
+    Kim1.display()
+}
+if let Kim2 = Human5(나이: -2, 몸무게: 5.5){
+    Kim2.display()
+    
+}else{
+    print("값 중에 Nil값이 들어갔다.")
+}
+var Kim3 : Human5 = Human5(나이: 3, 몸무게: 7.5)!
+Kim3.display()
+
+var Kim4 : Human5? = Human5(나이: 4, 몸무게: 10.5)
+Kim4!.display()
+
+//+ 추가 과제
+class Human6{
+    var age : Int
+    var weight : Double
+    func display(){
+        print("나이는 : \(age),몸무게는 \(weight)입니다")
+    }
+    init!(나이 age:Int,몸무게 weight:Double){
+        if age <= 0 || weight <= 0{
+            self.age = 0
+            self.weight = 0
+        }else{
+            self.age = age
+            self.weight = weight
+        }
+    
+    }
+}
+
+var Mo : Human6? = Human6(나이: -1, 몸무게: 17.0)
+Mo?.display()
+var Mo1 :Human6? = Human6(나이: -1, 몸무게: 17.0)
+if let Mo2 = Mo1{
+    Mo2.display()
+}
+if let Mo3 = Human6(나이: -17, 몸무게: 12.0){
+    Mo3.display()
+}
