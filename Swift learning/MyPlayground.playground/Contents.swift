@@ -211,5 +211,16 @@ variadicAdd(합할숫자를입력: 2,2,2,2,2)
 variadicAdd(합할숫자를입력: 1,1,1,1,1,1,1,1,1,1)
 variadicAdd(합할숫자를입력: 1,1,1,1)
 
+//Test 14 : inout 매개변수
+//Swift는 기본적으로 call by value
+//함수가 가져오는 매개변수에 변화가 생긴 후에도, 능동적으로 변화가 생긴다.
+var myValue = 10
+func doubleValue (value: inout Int) -> Int{
+    value += value
+    return value
+}
+print(myValue)
+print(doubleValue(value: &myValue))
+print(myValue)
 
 
