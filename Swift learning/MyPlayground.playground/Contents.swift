@@ -257,3 +257,9 @@ if value1 > 30{
     value2 == false
 }
 outputConverterFunc(사용할함수: decideFunction(feet: value2), 가져올변수값: value1)
+
+//Test 16 : 클로저 표현식
+//다른 이름으로 [block, Lambda function]
+//따로 명시하지는 않는 익명함수
+let funcC = {(x:Int, y:Int)->Int in return(x+y)}
+print(funcC(15,20))
