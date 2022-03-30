@@ -114,10 +114,10 @@ func addd(x:Int,y:Int) -> Int{
     return(x+y)
 }
 func setXY(x:Int,y:Int){
-    var xx :Int
-    var yy :Int
-    xx = x
-    yy = y
+    let 변수01 :Int
+    let 변수02 :Int
+    변수01 = x
+    변수02 = y
 }
 print(ddd(계산할값: 10))
 print(setX(계산할값: 15))
@@ -128,7 +128,7 @@ print(setXY(x: 15, y: 25))
 //Test9 : BMI판정결과를 리턴하는 calcBMI()함수를 정의
 import Foundation
 func calcBMI(몸무게 weight : Double,키 height : Double) -> String{
-    var bmi = weight / (height * height * 0.0001)
+    let bmi = weight / (height * height * 0.0001)
     switch(bmi){
     case 0..<18.5:
         return("저체중")
@@ -261,5 +261,7 @@ outputConverterFunc(사용할함수: decideFunction(feet: value2), 가져올변�
 //Test 16 : 클로저 표현식
 //다른 이름으로 [block, Lambda function]
 //따로 명시하지는 않는 익명함수
-let funcC = {(x:Int, y:Int)->Int in return(x+y)}
+let funcC = {(x:Int, y:Int) -> Int in return(x + y)}
 print(funcC(15,20))
+
+
