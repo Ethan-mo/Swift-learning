@@ -136,3 +136,28 @@ class Human3{
 var 상현 : Human3 = Human3(나이:62,몸무게:72.4)
 상현.display()
 
+//Test20 : 계산프로퍼티
+class Human4{
+    var age : Int = 1
+    var weight : Double = 5.0
+    //계산 프로퍼티 추가
+    var 만나이 : Int{
+        get{
+            return age - 1
+        }
+    }
+    //위와같이 setter가 없으면 get{}eㅗ 생략할 수 있따.
+    
+    func display(){
+        print("나의 나이는 : \(age), 나의 무게는 : \(weight)")
+    }
+    
+    init(나이 age:Int, 몸무게 weight:Double){
+        self.age = age
+        self.weight = weight
+    }
+}
+
+let 모상현 : Human4 = Human4(나이:19,몸무게:52.4)
+모상현.display()
+print(모상현.만나이)
