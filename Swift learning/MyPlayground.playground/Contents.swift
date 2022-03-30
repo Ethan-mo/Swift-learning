@@ -223,4 +223,37 @@ print(myValue)
 print(doubleValue(value: &myValue))
 print(myValue)
 
+//Test 15 : 매개변수로 함수를 가져올 때
+// 매개변수로 함수를 가져올 수도 있고, 반환(return)하는 데이터가 함수형일 수 도있다.
+func FuncA(인치 inches: Float) -> Float{
+    return inches * 0.0833333
+}
+func FuncB(인치 inches: Float) -> Float{
+    return inches * 0.0277778
+}
+let A = FuncA
+let B = FuncB
 
+func outputConverterFunc(사용할함수 : (Float)->Float, 가져올변수값 : Float){
+    let X = 사용할함수(가져올변수값)
+    print("result = \(X)")
+}
+
+outputConverterFunc(사용할함수: A, 가져올변수값: 10.0)
+outputConverterFunc(사용할함수: B, 가져올변수값: 10.0)
+
+func decideFunction(feet: Bool) -> (Float) -> Float{ //인자는 아니지만, 리턴형이 Float를 받아와서 Float를 반환하는 함수라는 의미
+    if feet{
+        return A
+    }else{
+        return B
+    }
+}
+var value1 : Float = 50
+var value2 : Bool = true
+if value1 > 30{
+    value2 == true
+}else{
+    value2 == false
+}
+outputConverterFunc(사용할함수: decideFunction(feet: value2), 가져올변수값: value1)
