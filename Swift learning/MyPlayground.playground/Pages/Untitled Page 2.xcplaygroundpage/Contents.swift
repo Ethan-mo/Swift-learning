@@ -61,3 +61,21 @@ print(result)
 //17_6_2 위 예시를 후방 클로저 방식으로 축약
 result = math(x: 10, y: 20){$0+$1}
 print(result)
+
+//Test18 : 클래스
+//프로퍼티(property)
+//프로퍼티는 저장프로퍼티, 계산프로퍼티로 나누어진다.
+
+class Man{
+    var age : Int
+    var weight : Double
+    let run = {(age: Int,weight: Double) -> Bool in
+        if age>15{
+            return true
+        }else{
+            return false
+        }
+    }
+}
+//여기서 age, weight는 저장프로퍼티
+//run은 계산프로퍼티이다.
