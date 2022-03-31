@@ -272,3 +272,35 @@ class Students : Human3 {
 }
 var 상현97 : Students = Students(이름 : "모상현", 나이 : 27, 몸무게 : 59.2)
 상현97.display()
+
+//Test22_4 : Convenience initializer
+print("Test 22_4 : Convenience initializer")
+class 사람{
+    var age : Int
+    var weight : Double
+
+    func display(){
+        print("나이는 :\(age) , 몸무게는 : \(weight)")
+    }
+    //인스턴스가 매개변수에 대한 초기화를 해주지 않았을 경우
+    init(){
+        self.age = 1
+        self.weight = 3.5
+    }
+    //인스턴스가 매개변수에 대한 값을 대입하는 경우
+    init(나이 age : Int, 몸무게 weight : Double){
+        self.age = age
+        self.weight = weight
+    }
+    //나이만 가져오고, 다른 값은 디폴트로 가져올 경우
+    convenience init(나이 age : Int){
+        self.init()
+        self.age = age
+    }
+}
+var 트리스 : 사람 = 사람()
+트리스.display()
+var 핸더슨 : 사람 = 사람(나이:29,몸무게:60)
+핸더슨.display()
+var 리차드 : 사람 = 사람(나이:34)
+리차드.display()
