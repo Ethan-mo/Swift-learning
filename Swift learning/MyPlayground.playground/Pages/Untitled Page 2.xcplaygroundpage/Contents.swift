@@ -257,3 +257,18 @@ class High_Student : Human3 {
 var sanguk :High_Student = High_Student(이름 : "상욱", 나이 : 31, 몸무게 : 60)
 sanguk.displays()
 sanguk.display()
+
+//Test22_3 : Override 상속
+// 오버로딩과는 다르게 같은 이름으로 메서드를 정의할 수 있다.(앞에 override라고 표기한 경우에만)
+class Students : Human3 {
+    var name : String
+    override func display(){
+        print("이름:\(name),나이:\(age),몸무게:\(weight)")
+    }
+    init(이름 name : String, 나이 age : Int, 몸무게 weight : Double){
+        self.name = name
+        super.init(나이 : age, 몸무게 : weight)
+    }
+}
+var 상현97 : Students = Students(이름 : "모상현", 나이 : 27, 몸무게 : 59.2)
+상현97.display()
