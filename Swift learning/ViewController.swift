@@ -10,6 +10,8 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet var Hello_라벨1 : UILabel!
     @IBOutlet var 이름_txt인풋1 : UITextField!
+    // 초반 설정으로, Nil이 기본으로 들어있는 상황이다.
+    
     //Interface Builder Outlet(변수, 프로퍼티)
 
     override func viewDidLoad() {
