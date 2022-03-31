@@ -294,7 +294,7 @@ class 사람{
     }
     //나이만 가져오고, 다른 값은 디폴트로 가져올 경우
     convenience init(나이 age : Int){
-        self.init()
+        self.init()//항상 이 문장을 먼저 써줘야함.
         self.age = age
     }
 }
@@ -304,3 +304,33 @@ var 핸더슨 : 사람 = 사람(나이:29,몸무게:60)
 핸더슨.display()
 var 리차드 : 사람 = 사람(나이:34)
 리차드.display()
+print("Test 22_5 : designated initializer와 convenience initializer를 모두 상속하는 경우")
+class 휴먼{
+    var age : Int
+    var weight : Double
+    
+    func display(){
+        print("나이는 : \(age), 몸무게는 : \(weight)")
+    }
+    init(나이 age : Int, 몸무게 weight : Double){
+        self.age = age
+        self.weight = weight
+    }
+    convenience init(나이 age: Int){
+        self.init(나이 : age,몸무게 : 3.6)
+    }
+}
+var 앤 : 휴먼 = 휴먼(나이 : 29,몸무게 : 30)
+앤.display()
+var 엘리야 : 휴먼 = 휴먼(나이 : 57)
+엘리야.display()
+
+class 휴먼_상속 : 휴먼 {
+}
+var 토니 : 휴먼_상속 = 휴먼_상속(나이 : 1234,몸무게 : 12345.2)
+토니.display()
+var 제이슨 : 휴먼_상속 = 휴먼_상속(나이 : 1002)
+제이슨.display()
+
+
+
