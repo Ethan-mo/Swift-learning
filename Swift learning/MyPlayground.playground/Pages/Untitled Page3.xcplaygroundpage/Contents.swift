@@ -52,3 +52,28 @@ print("Test 26 : 프로토콜(prorocol)이란?")
 //- 기능이나 속성에 대한 설계도
 //- 클래스(구조체, 열거형)에서 채택(adopt)하여 메서드를 구현해야 함
 //자바의 다중상속을 가능하게하는 인터페이스(interface)와 같은 역할이다.
+//프로토콜 구조:
+protocol 프로토콜1 {
+    var 프로퍼티1 : String?
+    func 메서드1(){}
+}
+protocol 프로토콜2 : 다른프로토콜1, 다른프로토콜2 { //프로토콜은 다중 상속이 가능하다.
+    
+}
+//프로토콜 사용 예시
+protocol SomeProtocol {
+    var x: Int { get set }  //get set은 읽기와 쓰기가 가능하다는 의미
+    var y: Int { get }      //get은 읽기 전용
+    static var tx: Int { get set }
+    static func typeMethod()// -> void return값으로 void가 생략
+    func random() -> Double // 중요한 것은 프로토콜이기 때문에 각 메서드 뒤에 {}를 달아서는 안된다는 점이다. 프로토콜은 메서드를 선언만 해줄 수 있다. 그러므로 {}를 사용해서는 안된다.
+}
+//실제 프로토콜 사용 예시
+protocol Runnable {
+    var x : Int {get set}
+    func run() -> void
+}
+class Man : Runnable{               //부모 클래스가 없고 프로토콜만 채택하는 경우에는 해당 프로토콜을 부모 클래스로 오인할 수 있다. 
+    var x : Int = 1                 //{get set}이기 떄문에 읽기, 쓰기가 가능
+    func run(){print("달린다~")}      //프로토콜 단위에서는 선언만, 클래스 내부에서 함수(메서드)를 정의
+}
