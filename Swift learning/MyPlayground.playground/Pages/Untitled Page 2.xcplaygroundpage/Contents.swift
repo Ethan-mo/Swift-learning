@@ -1,3 +1,5 @@
+import Darwin
+import UIKit
 
 //Test 17 : 다양한 예제를 클로저로 축약해서 표현해보기
 
@@ -215,13 +217,43 @@ class Human6{
     
     }
 }
-
+//처음 인스턴스를 만들었을 때 부터 옵셔널 표시를 해주었고, 그 이후에도 !를 표시하여 언래핑해줌
 var Mo : Human6? = Human6(나이: -1, 몸무게: 17.0)
-Mo?.display()
-var Mo1 :Human6? = Human6(나이: -1, 몸무게: 17.0)
-if let Mo2 = Mo1{
+Mo!.display()
+
+//인스턴스를 만들때도 클래스에 옵셔널 표시를 해주었고, 값을 불러올때는 옵셔널 바인딩 과정을 통해 언래핑과정을 거침
+if let Mo1 = Mo{
+    Mo1.display()
+}
+
+// 옵셔널 바인딩에 대해 조금 더 공부하자. 
+if let Mo2 = Human6(나이: -17, 몸무게: 12.0){
     Mo2.display()
 }
-if let Mo3 = Human6(나이: -17, 몸무게: 12.0){
-    Mo3.display()
+
+//Test22_1 : 상속
+//class 자식 : 부모 {}형태이며,
+//class는 단일 상속(부모와 자식이 1:1로 매칭)이며, 여러 프로토콜을 채택할 수 있다.
+class Student : Human3 {
+    
 }
+var Mosang1 : Human3 = Human3(나이:27,몸무게:58.5)
+Mosang1.display()
+var Sangeun : Student = Student(나이:33,몸무게:60)
+Sangeun.display()
+print(Sangeun.age)
+
+//Test22_2 : 상속하고 수정해보기
+class High_Student : Human3 {
+    var name :String
+    func displays(){
+        print("이름:\(name),나이:\(age),몸무게:\(weight)")
+    }
+    init(이름 name : String, 나이 age : Int, 몸무게 weight : Double){
+        self.name = name
+        super.init(나이 : age,몸무게 : weight)
+    }
+}
+var sanguk :High_Student = High_Student(이름 : "상욱", 나이 : 31, 몸무게 : 60)
+sanguk.displays()
+sanguk.display()
