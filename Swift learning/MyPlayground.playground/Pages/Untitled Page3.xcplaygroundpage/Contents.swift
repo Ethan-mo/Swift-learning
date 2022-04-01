@@ -37,7 +37,7 @@ public class MyClass{
     //현재 블럭 내에서만 사용 가능
     func display(){}
 }
-open class var blue : UIColor {get}
+//open class var blue : UIColor { get }
 //open : 모듈 외부까지(클래스에만 사용) 접근 가능
 //class : 클래스 프로퍼티
 
@@ -53,13 +53,13 @@ print("Test 26 : 프로토콜(prorocol)이란?")
 //- 클래스(구조체, 열거형)에서 채택(adopt)하여 메서드를 구현해야 함
 //자바의 다중상속을 가능하게하는 인터페이스(interface)와 같은 역할이다.
 //프로토콜 구조:
-protocol 프로토콜1 {
-    var 프로퍼티1 : String?
-    func 메서드1(){}
-}
-protocol 프로토콜2 : 다른프로토콜1, 다른프로토콜2 { //프로토콜은 다중 상속이 가능하다.
-    
-}
+//protocol 프로토콜1 {
+//    var 프로퍼티1 : String?
+//    func 메서드1()
+//}
+//protocol 프로토콜2 : 다른프로토콜1, 다른프로토콜2 { //프로토콜은 다중 상속이 가능하다.
+//
+//}
 //프로토콜 사용 예시
 protocol SomeProtocol {
     var x: Int { get set }  //get set은 읽기와 쓰기가 가능하다는 의미
@@ -71,9 +71,35 @@ protocol SomeProtocol {
 //실제 프로토콜 사용 예시
 protocol Runnable {
     var x : Int {get set}
-    func run() -> void
+    func run()
 }
-class Man : Runnable{               //부모 클래스가 없고 프로토콜만 채택하는 경우에는 해당 프로토콜을 부모 클래스로 오인할 수 있다. 
+class Man : Runnable{               //부모 클래스가 없고 프로토콜만 채택하는 경우에는 해당 프로토콜을 부모 클래스로 오인할 수 있다.
     var x : Int = 1                 //{get set}이기 떄문에 읽기, 쓰기가 가능
     func run(){print("달린다~")}      //프로토콜 단위에서는 선언만, 클래스 내부에서 함수(메서드)를 정의
 }
+var Sang = Man()
+Sang.run()
+
+
+print("Test 26 : 열거형 (enum)")
+// 관련있는 데이터들이 멤버로 구성되어 있는 자료형 객체
+//- 원치 않는 값이 잘못 입력되는 것 방지
+//- 입력 받을 값이 한정되어 있을 때
+//- 특정 값 중 하나만 선택하게 할 때
+// 사용 예시
+enum 색깔 {
+    case RED, BLUE, GREEN, YELLOW, BLACK
+}
+enum 색상 {
+    case 빨강
+    case 블루
+    case 초록
+    case 노랑
+    case 검정
+}
+var Color1 : 색상
+print(색상.노랑)
+var Color2 = 색상.노랑 // Color2의 타입을 정의해 주지 않아도 바로 초기화해 버렸다.
+print(Color2)
+Color2 = .검정        // Color2의 타입이 이미 열거형으로 선언이 되었있기에, 열거형 명을 생략해준 .멤버 형태로 사용되어진다.
+print(Color2)
