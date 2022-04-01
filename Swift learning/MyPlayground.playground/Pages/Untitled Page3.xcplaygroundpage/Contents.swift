@@ -81,7 +81,7 @@ var Sang = Man()
 Sang.run()
 
 
-print("Test 26 : 열거형 (enum)")
+print("Test 27 : 열거형 (enum)")
 // 관련있는 데이터들이 멤버로 구성되어 있는 자료형 객체
 //- 원치 않는 값이 잘못 입력되는 것 방지
 //- 입력 받을 값이 한정되어 있을 때
@@ -101,5 +101,69 @@ var Color1 : 색상
 print(색상.노랑)
 var Color2 = 색상.노랑 // Color2의 타입을 정의해 주지 않아도 바로 초기화해 버렸다.
 print(Color2)
+print("Color2의 타입은 :  + \(type(of: Color2))")
 Color2 = .검정        // Color2의 타입이 이미 열거형으로 선언이 되었있기에, 열거형 명을 생략해준 .멤버 형태로 사용되어진다.
 print(Color2)
+
+print("Test 27_1 : Swift의 열거형이 특별한점")
+enum Week: String{
+    case Mon, Tue, Wed, Thur, Fri, Sat, Sun
+    func printWeek(){
+        switch self{
+        case .Mon, .Tue, .Wed, .Thur, .Fri:
+            print("평일")
+        case .Sat, .Sun:
+            print("주말")
+        }
+    }
+}
+var Today : Week = Week.Sun
+print("\(Today)요일은")
+Week.Sun.printWeek()
+
+print("Test 27_2 : 열거형에 타입 지정하기")
+enum Color: Int{
+    case red
+    case black
+    case green = 2
+    case blue
+}
+print(Color.red)
+print(Color.blue)
+print(Color.black .rawValue)
+print(Color.green.rawValue)
+print(Color.blue.rawValue)
+
+print("Test 27_3 : 연관 값(associated value)을 갖는 열거형")
+enum Date {
+    case intDate(Int, Int, Int) //(int, int, int)형 연관값을 갖는 intDate
+    case stringDate(String)     //String형 연관값을 갖는 StringData
+}
+var todayDate = Date.intDate(2021, 4, 30)
+//todayDate = Date.stringDate("2021년 5월 20일")
+switch todayDate{
+case .intDate(let year, let month, let day):
+    print("\(year)년 \(month)월 \(day)일")
+case .stringDate(let date):
+    print(date)
+}
+print("Test 27_4 : 옵셔널은 사실 열거형이다.")
+let age : Int? = 30 //Optional(30)
+
+switch age{
+case .none: // nil인 경우
+    print("나이 정보가 없습니다.")
+case .some(let a) where a < 20:
+    print("\(a)살 미성년자 입니다. ")
+case .some(let a) where a < 71:
+    print("\(a)살 성인입니다.")
+default:
+    print("경로우대입니다.")
+}
+
+// + 추가과제
+var a1 : Int? = 20 // .some(20)
+var a2 : Int? = Optional.some(10)
+var a3 : Int? = Optional.none
+var a4 : Optional<Int> = 30
+print(a1,a2,a3,a4)
