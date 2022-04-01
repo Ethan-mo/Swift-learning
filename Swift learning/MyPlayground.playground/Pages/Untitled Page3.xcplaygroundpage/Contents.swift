@@ -167,3 +167,31 @@ var a2 : Int? = Optional.some(10)
 var a3 : Int? = Optional.none
 var a4 : Optional<Int> = 30
 print(a1,a2,a3,a4)
+
+print("Test 28 : 구조체")
+//구조체의 종류는 다양하다.
+//일반적으로 우리가 자주사용하는 Int, Double, String등은 일반적인 구조체이다.
+//조금 다른게 있다면, @frozen이라는 문구를 추가하여 추가, 삭제가 불가능하게 설정된 구조체라는 점이다.
+//하지만, Array나 Dictionary, Set은 Generic Structure라고 부르며, 이는 만든 후에 정의가 되는 형태이다.
+//+ 참고로 nil도 구조체이다.
+//+ 구조체는 상속이 불가능하다.
+struct Resolution {
+    var width = 1024
+    var height = 768
+}
+let myComputer = Resolution()
+print(myComputer.width)
+let myComputer2 = Resolution(width: 12313123, height: 12312313)
+print(myComputer2.width)
+
+class Resolution2 {
+    var width : Int
+    var height : Int
+    init(너비 width:Int, 높이 height:Int){
+        self.width = width
+        self.height = height
+    }
+}
+let 사람1 = Resolution2(너비:12313,높이:123123)
+print(사람1.width)
+
