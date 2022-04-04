@@ -195,3 +195,27 @@ class Resolution2 {
 let 사람1 = Resolution2(너비:12313,높이:123123)
 print(사람1.width)
 
+print("Test 29 : 클래스와 구조체의 공통점")
+//1. 프로퍼티를 정의할 수 있음
+//2. 메서드를 사용할 수 있음
+//3. []를 사용해 첨자 문법으로 내부의 값을 액세스 할 수 있음
+//4. 초기상태 설정을 위한 초기화 함수(initializer)를 정의할 수 있음
+//5. extension 가능
+//6. protocol 채택가능
+print("Test 29_1 : 클래스와 구조체의 차이점")
+//1. 상속이 가능하다
+//2. 타입 캐스팅(is, as, as? as!)을 통해 실행 시점에 클래스 인스턴스의 타입을 검사하고 해석 가능
+//3. deinitializer(deinit{})로 사용한 자원을 반환 가능 (* 클래스는 래퍼런스 타입이기 때문)
+//4. 참조 카운팅을 통해 한 클래스 인스턴스를 여러 곳에서 참조(사용)가능
+//- 래퍼런스 타입이기 때문에, 인스턴트또한 래퍼런스의 특성으로 다른 곳에서 참조되어 사용할 수 있다.
+struct s_Human{
+    var age : Int = 1
+}
+var kim = s_Human()
+var lee = kim
+
+print (kim.age, lee.age)
+lee.age = 20
+print(kim.age, lee.age)
+kim.age = 30
+print(kim.age, lee.age)
