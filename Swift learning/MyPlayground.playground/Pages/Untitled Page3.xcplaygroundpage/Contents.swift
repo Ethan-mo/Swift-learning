@@ -208,6 +208,7 @@ print("Test 29_1 : 클래스와 구조체의 차이점")
 //3. deinitializer(deinit{})로 사용한 자원을 반환 가능 (* 클래스는 래퍼런스 타입이기 때문)
 //4. 참조 카운팅을 통해 한 클래스 인스턴스를 여러 곳에서 참조(사용)가능
 //- 래퍼런스 타입이기 때문에, 인스턴트또한 래퍼런스의 특성으로 다른 곳에서 참조되어 사용할 수 있다.
+print("구조체")
 struct s_Human{
     var age : Int = 1
 }
@@ -219,3 +220,49 @@ lee.age = 20
 print(kim.age, lee.age)
 kim.age = 30
 print(kim.age, lee.age)
+print("클래스")
+class c_Human {
+    var age : Int = 1
+}
+var kim1 = c_Human()
+var lee1 = kim1
+print(kim1.age, lee1.age)
+lee1.age = 20
+print(kim1.age, lee1.age)
+kim1.age = 30
+print(kim1.age, lee1.age)
+
+print("실습")
+struct Resolution1{
+    var width = 0
+    var height = 0
+} // 이 구조체는 길이와 높이의 기본 값을 설정해주는 구조체이다.
+
+class VideoMode {
+    var resolution = Resolution1()
+    var frameRate = 0
+    var name : String?
+} // 이 클래스는 길이와 높이는 구조체형으로 가져오기 때문에, '길이'와 '높이'에 한하여서는 값만 가져온다.(즉, 불러올 주소 자체가 없다는 뜻.)
+
+var hd = Resolution1(width: 1920, height: 1080)  // 변수를 하나 만들었는데, 이는 구조체 형식을 가지고 있다.
+var highDef = hd                                // 그리고 그 변수는 또 다른 변수의 이름을 가지고 있다.
+print(hd.width, highDef.width)                  // 구조체타입을 가진 변수를 또 다른 변수에 대입하였다. 이는 하나의 레퍼런스가 아닌, 복제1, 복제1_1이라고 생각하면 된다. 복제2가아닌 복제 1_1인 이유는, highDef가 Resolution1를 직접 복제한게 아닌, hd를 복제했기 때문이다.
+hd.width = 1024                                 // 복제1의 width의 값을 변경하였다.
+print(hd.width, highDef.width)
+
+var xMonitor = VideoMode()          //이제 클래스를 만들어 보겠다.
+xMonitor.resolution = hd            //해당 클래스에서 width와 height값은 구조체형식으로 가져온다. 여기서 궁금한 것은, 구조체타입을 따르는 클래스는 해당 변수를
+xMonitor.name = "LG"
+xMonitor.frameRate = 30
+print(xMonitor.frameRate)
+
+var yMonitor = xMonitor
+
+yMonitor.frameRate = 25
+print(yMonitor.frameRate)
+print(xMonitor.frameRate)
+
+hd.width = 1004
+print(xMonitor.resolution.width)    //해당 결과를 통해 알 수 있는 것은, hd라는 구조체를 복제1이라고 지칭해보자. 클래스명.resolution = hd이라고 함으로써, 클래스명.width나 클래스명.height값은 hd라는 구조체의 주소(레퍼런스)를 통해 값을 불러온다.
+                                    //즉, 위의 예시에서는 xMonitor의 width나 height값은 복제1인 hd.width나 hd.height값의 레퍼런스를 가져오는 것이므로, hd의 width값이나 height값이 변경되면, 당연히 xMonitor의 width와 height값도 변경된다.
+
