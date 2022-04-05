@@ -85,3 +85,25 @@ print("Test 32 : 오류 처리(Error Handling)")
 //} catch let error as NSError{
 //    print("Error-initPlay : \(error)")
 //}
+print("Test 33 : Generic문법 사용하기")
+// 구조체(structure)의 종류로, 자료형이 나중에 결정하게끔 하는 기능을 수행한다.
+var aaa : [Int] = [1,2,3,4]
+var bbb : Array<Int> = [1,2,3,4]
+
+func myPrint<T>(aaa: T, bbb: T){
+    print(bbb,aaa)
+}
+myPrint(aaa:1,   bbb: 2)
+myPrint(aaa:2.5, bbb: 3.5)
+myPrint(aaa:"Hi",bbb:"Hello")
+
+func swapAny<any>(_ a:inout any, _ b:inout any){
+    let temp = a
+    a = b
+    b = temp
+}
+var 첫번째 = 50
+var 두번째 = 30
+print(첫번째, 두번째)
+swapAny(&첫번째, &두번째)
+print(첫번째, 두번째)
