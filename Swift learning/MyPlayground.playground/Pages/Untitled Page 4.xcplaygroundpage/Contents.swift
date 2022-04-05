@@ -68,3 +68,20 @@ print("4: \(p.sns!.fb!.account)")
 
 print("5: \(p.sns?.tt?.account)")
 // print("6: \(p.sns!.tt!.account)")
+
+print("Test 32 : 오류 처리(Error Handling)")
+// 예외처리를 의미하며, 런타임 시 오류를 발견하여 응답하여 복구하는 과정
+// 오류 발생 시 무제를 보정하거나 사용자에게 오류를 알림
+// 4가지 방법이 있다. 그 중 2가지만 배워보자.
+// 1. throwing function
+// throws 키워드를 사용하며, error를 던질 수 있다. ex) func can() throws, func 함수명() throws -> String
+// throws라는 키워드가 있다는 것은, error handling을 해야한다는 의미이다.
+//
+// 2. 오류 발생 가능 함수의 호출 방식(do~try~catch)
+// do~ try~와 catch~키워드를 사용하며,
+//사용 예시
+//do{
+//    audioPlayer = try AVAudioPlayer(contentsOf: audioFile)
+//} catch let error as NSError{
+//    print("Error-initPlay : \(error)")
+//}
