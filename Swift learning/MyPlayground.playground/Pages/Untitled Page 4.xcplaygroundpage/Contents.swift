@@ -107,3 +107,53 @@ var 두번째 = 30
 print(첫번째, 두번째)
 swapAny(&첫번째, &두번째)
 print(첫번째, 두번째)
+
+
+struct Stack <T> {
+    var items = [T]()
+    mutating func push(_ item: T){
+        items.append(item)
+    }
+    mutating func pop() -> T {
+        return items.removeLast()
+    }
+}
+
+var stackOfInt = Stack<Int>()
+print(stackOfInt.items)
+stackOfInt.push(1)
+print(stackOfInt.items)
+stackOfInt.push(2)
+print(stackOfInt.items)
+stackOfInt.push(3)
+print(stackOfInt.items)
+stackOfInt.push(4)
+print(stackOfInt.items)
+stackOfInt.pop()
+print(stackOfInt.items)
+stackOfInt.pop()
+print(stackOfInt.items)
+stackOfInt.pop()
+print(stackOfInt.items)
+stackOfInt.pop()
+print(stackOfInt.items)
+
+var stackOfString = Stack<String>()
+print(stackOfString.items)
+stackOfString.push("일")
+print(stackOfString.items)
+stackOfString.push("이")
+print(stackOfString.items)
+stackOfString.push("삼")
+print(stackOfString.items)
+stackOfString.push("사")
+print(stackOfString.items)
+stackOfString.pop()
+print(stackOfString.items)
+stackOfString.pop()
+print(stackOfString.items)
+stackOfString.pop()
+print(stackOfString.items)
+stackOfString.pop()
+print(stackOfString.items)
+
