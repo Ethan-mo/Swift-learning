@@ -157,3 +157,126 @@ print(stackOfString.items)
 stackOfString.pop()
 print(stackOfString.items)
 
+// 대표적으로 Array는 대표적인 generic구조체의 종류이다.
+print("Test34 : Collection Type - 1. 배열 (Array(연결리스트))")
+//빈 배열을 표현하는 다양한 방법
+var test34_x : [Int] = []
+var test34_y = [Int]()  // *아주 중요 :가 아닌 =를 썼다는 점.
+var test34_z : Array<Int> = []
+var test34_i : Array<Int> = Array()
+
+var test34_a : [Int] = [1,2,3,4]
+var test34_b : Array<Int> = [1,2,3,4]
+var test34_c : Array<Double> = [1.2,2.3,4.6,5.1]
+// @frozen struct Array<Element>
+// @frozen의 의미는 저장프로퍼티를 추가하거나 삭제가 불가.
+
+let test34_number = [1,2,3,4]
+let test34_odd : [Int] = [1,3,5]
+let test34_even : Array<Int> = [2,4,6]
+
+//배열을 서로 다른방법으로 정의한 모습이다.
+print(type(of: test34_number))
+print(test34_number)
+
+print(type(of: test34_odd))
+print(test34_odd)
+
+print(type(of: test34_even))
+print(test34_even)
+
+let test34_animal = ["dog","cat","cow"]
+print(type(of: test34_animal))
+print(test34_animal)
+
+//배열 유의사항
+    //1. 빈 배열은 var로 선언할 것. let은 수정이 불가.
+    //2. var number = [Int](), number[0] = 1
+        // 이러한 코드는 불가능, 왜? -> number[0]이라는 공간이 생성되어있지 않기 때문에, '1'이라는 값을 불러올 수 없음.
+        // 해결하기 위해서는 어떤 값이든 append해준 후에, 해당 공간을 생성해주어야 한다.
+
+var test34_1_x = [0,0,0,0,0]
+print(test34_1_x)
+var test34_1_x1 = Array(repeating: 0, count : 5)
+print(test34_1_x1)
+var test34_1_x2 = [Int](repeating: 1, count: 3)
+print(test34_1_x2)
+var test34_1_x3 = [String](repeating: "A", count: 42)
+print(test34_1_x3)
+
+print("for~in으로 배열 항목 접근방법")
+let test34_2_colors = ["red","green","blue"]
+print(test34_2_colors)
+
+for test34_2_color in test34_2_colors {
+    print(test34_2_color)
+}
+print("각 배열의 index순서값 불러오기")
+for (index, test34_2_color) in test34_2_colors.enumerated() {
+    print("\(index)번째 값은 : \(test34_2_color)")
+}
+print("항목이 몇 개인지(count), 비어있는지(isEmpty)알아내기")
+let test34_3_num = [1,2,3,4]
+var test34_3_x = [Int]()
+print(test34_3_num.isEmpty) //비어있으면 true, 안비어있으면 false
+print(test34_3_x.isEmpty)
+
+if test34_3_num.isEmpty{
+    print("비어있습니다.")
+}else{
+    print(test34_3_num.count)
+}
+
+print("first와 last프로퍼티")
+let test34_4_num = [1,2,3,4]
+let test34_4_num1 = [Int]()
+
+print(test34_4_num.first, test34_4_num.last)
+print(test34_4_num1.first, test34_4_num1.last)
+
+if let f = test34_4_num.first, let l = test34_4_num.last {
+    print(f,l)
+}
+
+print("첨자(subscript)로 항목 접근")
+var test34_5_num = [1,2,3,4]
+print(test34_5_num[0],test34_5_num[3])
+print(test34_5_num.first!)
+for i in 0...test34_5_num.count-1{
+    print(test34_5_num[i])
+}
+for i in 0...test34_5_num.endIndex-1{ // endIndex는 배열의 마지막 순서+1
+    print(test34_5_num[i])
+}
+// count와 endIndex의 차이점은?
+print(test34_5_num[1...2])
+test34_5_num[0...2] = [10,20,30]
+print(test34_5_num)
+
+print("Array는 구조체이므로 값 타입")
+var test34_6_num = [1,2,3]
+var test34_6_x = test34_6_num
+test34_6_num[0] = 100
+print(test34_6_num)
+print(test34_6_x)
+
+print("Array 요소의 최댓값 최솟값 : max(), min()")
+var test34_7_num = [1,2,3,10,20]
+
+print(test34_7_num)
+print(test34_7_num.min())
+print(test34_7_num.max())
+print(test34_7_num.min()!)
+print(test34_7_num.max()!)
+
+print("Array 요소의 정렬")
+var test34_8_num = [1,5,3,2,4]
+print(test34_8_num)
+test34_8_num.sort() // sort는 원본을 정렬해서 변경
+print(test34_8_num)
+
+test34_8_num[0...4] = [2,3,4,5,1]
+print(test34_8_num)
+print(test34_8_num.sorted())// sorted는 원본이아닌 사본으로 정렬
+print(test34_8_num)
+print(test34_8_num.sorted(by:>))//내림차순
