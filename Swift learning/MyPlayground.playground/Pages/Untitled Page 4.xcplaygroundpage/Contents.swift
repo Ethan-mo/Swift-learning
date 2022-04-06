@@ -1,3 +1,4 @@
+import UIKit
 print("Test 31 : 옵셔널 체이닝(optional Chaining)")
 var x : String? = "Hi"      //x라는 변수는 nil값이 올 수도있다. 다만, 지금은 "Hi"라는 값을 가지고 있다.
 
@@ -280,3 +281,123 @@ print(test34_8_num)
 print(test34_8_num.sorted())// sorted는 원본이아닌 사본으로 정렬
 print(test34_8_num)
 print(test34_8_num.sorted(by:>))//내림차순
+
+print("Test 35 : 고차함수(Higher-order fnuction)")
+// 1급 객체의 조건
+    // 1. 변수에 저장할 수 있다.
+    // 2. 매개변수로 전달할 수 있다.
+    // 3. 리턴값으로 사용할 수 있다.
+print("클로저 표현식")
+func test35_add(x: Int, y: Int) -> Int{
+    return (x+y)
+}
+print(test35_add(x: 10, y: 20))
+
+let test35_add1 = {(x: Int, y: Int) -> Int in
+    return(x+y)
+}
+print(test35_add1(10,7))
+
+//let onAction = UIAlertAction(title: "On", style:UIAlertAction.Style.default){
+//    ACTION in self.lampImg.image = self.imgOn
+//    self.isLampOn = true
+//}
+//
+//let removeAction = UIAlertAction(title: "제거", style: <#T##UIAlertAction.Style#>.destructive, handler: {
+//    ACTION in self.lampImg.image = self.imgRemove
+//    self.isLampOn = false
+//}
+
+var test35_1_arr = [1,2,3,4,10]
+var test35_1_num = test35_1_arr
+for index in test35_1_arr.indices{
+    print("\(index)번째 값은 : \(test35_1_arr[index])")
+}
+
+print("map")
+//컨테이너가 담고있던 각각의 값을 매개변수를 통해 받은 함수에 적용한 후 새로운 컨테이너를 생성하여 반환
+let test35_2_arr = [0,1,2,3]
+let test35_2_num = test35_2_arr.map({(x:Int)->Int in return x+1}) // 축약형을 쓰지않고 클로저 함수를 통해 map구현
+print(test35_2_num)
+
+let test35_2_num1 = test35_2_arr.map({$0+1}) // 클로저함수를 축약형으로 사용하였다.
+print(test35_2_num1)
+
+print("map 예제1")
+let test35_3_arr = [0,1,2,3]
+var test35_3_arr1 = test35_3_arr.map({$0 + 1})
+
+print(test35_3_arr)
+print(test35_3_arr1)
+
+test35_3_arr1 = test35_3_arr.map({$0 - 1})
+print(test35_3_arr1)
+
+test35_3_arr1 = test35_3_arr.map({$0 * 5})
+print(test35_3_arr1)
+
+print("map 예제2")
+let test35_4_str = "Hi"
+let test35_4_arr = Array(test35_4_str)
+print(test35_4_arr)
+
+let test35_4_arr1 = test35_4_str.map({String($0)})
+print(test35_4_arr1)
+
+let test35_4_color = ["red", "green", "blue", "한"]
+let test35_4_count = test35_4_color.map({$0.count}) //이렇게 매개변수에 대한 함수를 사용할 수도 있다.
+print(test35_4_count)
+
+print("compactMap")
+let test35_5_x : [Int?] = [0,1,2,nil,4] //옵셔널형일 경우 nil도 들어갈 수 있다.
+let test35_5_map = test35_5_x.map({$0}) //특별한 점은 없다.
+let test35_5_cMap = test35_5_x.compactMap({$0}) //해당 키워드는 인자중에 nil값을 제거해준다.
+print(test35_5_x)
+print(test35_5_map)
+print(test35_5_cMap)
+
+print("filter")
+// 컨테이너가 담고 있던 각각의 값을 조건에 맞는 새로운 값만 추출하여 반환
+let test35_6_arr = [1,2,3,4,5]
+var test35_6_f = [Int]()
+for x in test35_6_arr{
+    if x%2 == 0{
+        test35_6_f.append(x)
+    }
+}
+print(test35_6_f)
+var filteredArr = test35_6_arr.filter({$0%2 == 0})  //arr에서 짝수인 애들만 선정해서 filteredArr에 저장해라
+print(filteredArr)
+filteredArr = test35_6_arr.filter({$0%2 != 0})      //arr에서 홀수인 애들만 선정해서 filteredArr에 저장해라
+print(filteredArr)
+
+print("reduce")
+//컨테이너 내부의 값을 하나로 통합(연산)하여 리턴
+
+var test35_7_x = ["a","1","c","AB","한"]
+var test35_7_x1 = test35_7_x.joined()
+print(test35_7_x1)
+
+var test35_7_x2 = test35_7_x.reduce("result",{$0+$1}) //여기서 result는 초기값
+print(test35_7_x2)
+
+let test35_7_y2 = ["a","b","c","d"]
+let test35_7_y3 = test35_7_y2.reduce("결과 = "){$0+$1} //이렇게 reduce()를 2가지 방식으로 사용할 수 있다.
+print(test35_7_y3)
+
+let test35_8_y = [1,2,3,4]
+var test35_8_sum = 0
+for test35_8_y의인자 in test35_8_y {
+    test35_8_sum += test35_8_y의인자
+}
+print(test35_8_sum)
+
+let test35_8_y1 = test35_8_y.reduce(0){$0+$1}
+print(test35_8_y1)
+
+let test35_8_y2 = test35_8_y.reduce(10){$0*$1}
+print(test35_8_y2)
+
+var 닉네임 = ["푸른눈의백룡","_강력","_광폭","_바람"]
+let Player1 = 닉네임.reduce("닉네임 : ") {$0+$1}//reduce() 괄호안에 값은 초기 값이다. 게임에서 사용자닉네임.reduce("닉네임 : "){$0+$1}이라고 표현할 수 있다.
+print(Player1)
