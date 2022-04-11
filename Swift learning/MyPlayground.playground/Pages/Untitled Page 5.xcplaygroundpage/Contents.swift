@@ -1,3 +1,4 @@
+import UIKit
 print("서브스크립트(Subscript)")
 // 배열에 요소에 접근할때 쓰는 문법
 
@@ -136,3 +137,82 @@ if let 확인된주소 = 주소, let 확인된이름 = 이름, let 확인된연�
 else{
     print("기입한 내용에 오류가 있습니다. 주소, 이름, 연락처, 제품명을 확인해주세요.")
 }
+
+// 2.3 두가지 옵셔널 타입
+// 옵셔널이 항상 유효한 값을 가질 경우, 옵셔널이 암묵적인 언래핑이 되도록 선언할 수도있음. -> Nil값을 갖을 경우가 없다면
+
+// ! ? 차이는 뭘까?
+let test39_1_x : Int? = 1
+let test39_1_y : Int = test39_1_x!
+let test39_1_z = test39_1_x
+print(test39_1_x,test39_1_y,test39_1_z)
+print(type(of: test39_1_x),type(of: test39_1_y),type(of: test39_1_z))
+
+let test39_1_a : Int! = 1
+let test39_1_b : Int = test39_1_a   //optional로 사용되지 않으면 자동으로 unwrap
+let test39_1_c : Int = test39_1_a!
+let test39_1_d = test39_1_a
+let test39_1_e = test39_1_a + 1
+print(test39_1_a,test39_1_b,test39_1_c,test39_1_d,test39_1_e)
+print(type(of: test39_1_a),type(of: test39_1_b),type(of: test39_1_c),type(of: test39_1_d),type(of: test39_1_e))
+
+//실제 사용 예시
+class test39_1_MyAge{
+    var test39_1_age : Int!
+    init(test39_1_age: Int){
+        self.test39_1_age = test39_1_age
+    }
+    func printAge(){
+        print(test39_1_age)                         // 옵셔널(1)
+        print(test39_1_age + 1)                     // 그냥 2
+        let test39_1_age1 : Int = test39_1_age      // 옵셔널아님
+        print(test39_1_age1)                        // 1
+        let test39_1_age2 = test39_1_age + 2        // 옵셔널아님
+        print(test39_1_age2)                        // 3
+    }
+    
+}
+var test39_1_han = test39_1_MyAge(test39_1_age: 1)
+test39_1_han.printAge()
+
+// 2.4 Nil-Coalescing Operator (Nil합병연산자) ??
+// 옵셔널 변수 ?? nil일 때, 할당되는 값을 선언해줄 수 있다.
+
+let defaultColor = "black"
+var userDefinedColor: String? // defaults to nil
+
+var myColor = userDefinedColor ?? defaultColor // nil이므로 defaultColor인 black으로 할당된다.
+print(myColor)
+print(type(of: myColor))
+userDefinedColor = "red"
+myColor = userDefinedColor ?? defaultColor //nil이 아니므로 defaultColor는 설정되지 않는다. 그리고, 해당 작업을 통해서 옵셔널탈출이 발생한다. 즉, myColor의 데이터타입은 Optional("red")가 아니라 red가 된다.
+print(myColor)
+print(type(of: myColor))
+
+// 2.5 형변환 (as! as?로 downcasting)
+// 다운케스팅은 부모 인스턴스를 자식 클래스로 변환하는 데 사용한다.
+    // 성공 확신이 있으면 as! 키워드를 사용하며 강제 변환
+        // 변환이 안되면 crash
+    // 성공 확신이 없으면 as?를 사용하여 안전하게 변환
+        // 변환이 안되면 nil을 리턴하므로 옵셔널 타입으로 반환함
+
+//let myScrollView: UIScrollView = UIScrollView() // 부모 인스턴스
+//let myTextView = myScrollView as! UITextView // 부모인스턴스 as! 자식클래스
+//
+//if let myTextView = myScrollView as? UITextView {
+//    print("Type cast to UITextView succeeded")
+//}else{
+//    print("Type cast to UITextView failed")
+//
+//}
+
+//Ex 형변환 예제
+var test39_2_x : Any = "Hi"
+print(test39_2_x, type(of: test39_2_x))
+test39_2_x = 10
+
+var test39_2_y : Int = test39_2_x as! Int
+var test39_2_z : Int? = test39_2_x as? Int
+print(test39_2_x, type(of: test39_2_x))
+print(test39_2_y, type(of: test39_2_y))
+print(test39_2_z, type(of: test39_2_z)) // 안정된 코드를 위해 한겹 둘러싸준다.
