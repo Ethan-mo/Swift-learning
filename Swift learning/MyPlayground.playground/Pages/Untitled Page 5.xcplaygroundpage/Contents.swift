@@ -88,3 +88,51 @@ print("그 외에")
 print("1. Dictionary 정렬")
 // key, value 둘다 정렬이 가능하다.
 print("2. Keys나 VAlue형을 Array형으로 만들기")
+
+print("내용정리")
+//Swift문법으로 String이나 ARC은 차후에 진행할 예정이다.
+// 1. 애플(Swift)에서는 효율과 안전을 위해 var대신 let사용을 적극권장
+// 2. 옵셔널 바인딩은 항상 if let 변수명 = 옵셔널변수명{}형태로 사용되는 것이 아니라, var형태로도 사용할 수 있다.(하지만 메서드다보니 대부분 let으로 사용하는것으로 보여짐.)
+    // 옵셔널 바인딩의 구조 if (let/var) "변수명" = "옵셔널명"{} -> 만약 "옵셔널명"이 Nil이 아니면 "변수명"에 대입, Nil이면 "변수명"에 대입하지않음.
+
+// 2.1 Optional binding 기본 사용방법
+var test39_x : Int?
+test39_x = 10
+if var test39_xx = test39_x {
+    print(test39_xx)
+}else{
+    print("짜잔~ 이건 Nil값이야~")
+}
+
+var test39_y : Int?
+if let test39_yy = test39_y {
+    print(test39_yy)
+}else{
+    print("짜잔~ 이건 Nil값이야~")
+}
+
+// 2.2 Optional binding 활용법
+    // 여러 옵셔널을 한번에 언래핑하기
+var test39_pet1: String?
+var test39_pet2: String?
+test39_pet1 = "cat"
+test39_pet2 = "dog"
+if let Firstpet = test39_pet1, var Secondpet = test39_pet2{ // 중요한 점은, 추가되는 옵셔널 조건마다 let/var을 추가해줄 것
+    print(Firstpet,Secondpet)
+}// 이와같은 내용은 아래와 같은 예시에서 사용될 수 있다,
+
+var 주소 : String?
+var 이름 : String?
+var 연락처 : String?
+var 제품명 : String?
+주소 = "경기도 권선구 금곡로 46, 513동 1103호"
+이름 = "모상현"
+연락처 = "010-6435-4096"
+제품명 = "모닛베이비"
+
+if let 확인된주소 = 주소, let 확인된이름 = 이름, let 확인된연락처 = 연락처, let 확인된제품명 = 제품명{
+    print("주소 : \(확인된주소) \n받는사람 :\(확인된이름) \n연락처 : \(확인된연락처) \n제품명: \(확인된제품명)")
+}
+else{
+    print("기입한 내용에 오류가 있습니다. 주소, 이름, 연락처, 제품명을 확인해주세요.")
+}
