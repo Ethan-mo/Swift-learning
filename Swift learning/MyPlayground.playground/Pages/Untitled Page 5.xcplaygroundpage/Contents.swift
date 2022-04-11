@@ -216,3 +216,27 @@ var test39_2_z : Int? = test39_2_x as? Int
 print(test39_2_x, type(of: test39_2_x))
 print(test39_2_y, type(of: test39_2_y))
 print(test39_2_z, type(of: test39_2_z)) // 안정된 코드를 위해 한겹 둘러싸준다.
+
+// 3. 범위 연산자
+    // 1) 닫힌 범위 연산자
+        // x...y
+            // x에서 시작하여 y로 끝나는 범위에 포함된 숫자
+        // 5...8
+            // 5,6,7,8
+    // 2) 반 열린 범위 연산자
+        // x..<y
+            // x부터 시작하여 y가 포함되지 않는 모든 숫자
+        // 5..<8
+            // 5,6,7
+    // 3) One-Sided Ranges
+let names = ["A","B","C","D"]
+for name in names[2...]{ //case 1
+    print("case1 : \(name)")
+}
+for name in names[...2]{ //case 2
+    print("case2 : \(name)")
+}
+for name in names[0..<3]{ //case 3
+    print("case3 : \(name)")
+}
+
