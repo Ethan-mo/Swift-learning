@@ -5,6 +5,13 @@
 //  Created by Ethan on 2022/03/29.
 //
 
+// AppDelegate 기능
+    // 1. 앱의 중요한 데이터 초기화
+    // 2. 앱의 scene 환경 설정
+    // 3. 앱 밖에서 발생한 알림(배터리부족, 다운로드 완료 등)에 대응
+    // 4. 특정한 scene, view, view, controller에 한정하지 않고 앱자체 타겟 이벤트에 대응
+    // 5. 푸시 알림 서비스 같은 실행 시 요구되는 서비스 등록
+
 import UIKit
 
 @main
