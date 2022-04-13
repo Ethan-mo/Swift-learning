@@ -4,7 +4,6 @@
 //
 //  Created by Ethan on 2022/04/13.
 //
-
 import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
@@ -31,11 +30,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     // UI 테이블 뷰 데이터 소스 프로토콜에서 필수로 구현해야하는 메서드 2
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init(style: .value1, reuseIdentifier: "MyCell")
-        //let cell = UITableViewCell(style: .default, reuseIdentifier: "MyCell")  -> .init은 생략할 수 있다.
-        cell.textLabel?.text = "\(indexPath.row)" //여기에 있는 textLabel은 UITableViewCell.init()안에 .default에서 생성된 프로퍼티이다.
-        cell.detailTextLabel?.text = indexPath.description //description은 현재 섹션의 몇번째 row인지 2차원 배열형태로 출력해준다.
+//        let cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: "MyCell")
+//        //let cell = UITableViewCell(style: .default, reuseIdentifier: "MyCell")  -> .init은 생략할 수 있다.
+//        cell.textLabel?.text = "\(indexPath.row)" //여기에 있는 textLabel은 UITableViewCell.init()안에 .default에서 생성된 프로퍼티이다.
+//        cell.detailTextLabel?.text = indexPath.description //description은 현재 섹션의 몇번째 row인지 2차원 배열형태로 출력해준다.
+//        cell.imageView?.image = UIImage(named: "smile.png")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyTableViewCell
+        cell.myLabel.text = indexPath.description
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
     }
 
 }

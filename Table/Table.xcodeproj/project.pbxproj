@@ -13,6 +13,8 @@
 		AA98CEE02806A61600383B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA98CEDE2806A61600383B0F /* Main.storyboard */; };
 		AA98CEE22806A61A00383B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA98CEE12806A61A00383B0F /* Assets.xcassets */; };
 		AA98CEE52806A61A00383B0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA98CEE32806A61A00383B0F /* LaunchScreen.storyboard */; };
+		AA98CEED2806B7B900383B0F /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = AA98CEEC2806B7B900383B0F /* smile.png */; };
+		AA98CEEF2806FE8700383B0F /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA98CEEE2806FE8700383B0F /* MyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		AA98CEE12806A61A00383B0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA98CEE42806A61A00383B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA98CEE62806A61A00383B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA98CEEC2806B7B900383B0F /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
+		AA98CEEE2806FE8700383B0F /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				AA98CEE12806A61A00383B0F /* Assets.xcassets */,
 				AA98CEE32806A61A00383B0F /* LaunchScreen.storyboard */,
 				AA98CEE62806A61A00383B0F /* Info.plist */,
+				AA98CEEC2806B7B900383B0F /* smile.png */,
+				AA98CEEE2806FE8700383B0F /* MyTableViewCell.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -127,6 +133,7 @@
 			files = (
 				AA98CEE52806A61A00383B0F /* LaunchScreen.storyboard in Resources */,
 				AA98CEE22806A61A00383B0F /* Assets.xcassets in Resources */,
+				AA98CEED2806B7B900383B0F /* smile.png in Resources */,
 				AA98CEE02806A61600383B0F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA98CEDD2806A61600383B0F /* ViewController.swift in Sources */,
+				AA98CEEF2806FE8700383B0F /* MyTableViewCell.swift in Sources */,
 				AA98CED92806A61600383B0F /* AppDelegate.swift in Sources */,
 				AA98CEDB2806A61600383B0F /* SceneDelegate.swift in Sources */,
 			);
