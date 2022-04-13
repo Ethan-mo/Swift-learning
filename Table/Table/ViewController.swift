@@ -19,6 +19,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         table.dataSource = self
         table.delegate = self
     }
+    // 필수 메서드는 아니지만, 섹션을 추가하기 위해 만든 메서드
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
     
     // UI 테이블 뷰 데이터 소스 프로토콜에서 필수로 구현해야하는 메서드 1
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //numberOfRowsInSection은 section에서 row의 개수를 의미
@@ -26,8 +31,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     // UI 테이블 뷰 데이터 소스 프로토콜에서 필수로 구현해야하는 메서드 2
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init(style: .default, reuseIdentifier: "MyCell")
-        cell.textLabel?.text = "\(indexPath.row)"
+        let cell = UITableViewCell.init(style: .value1, reuseIdentifier: "MyCell")
+        //let cell = UITableViewCell(style: .default, reuseIdentifier: "MyCell")  -> .init은 생략할 수 있다.
+        cell.textLabel?.text = "\(indexPath.row)" //여기에 있는 textLabel은 UITableViewCell.init()안에 .default에서 생성된 프로퍼티이다.
+        cell.detailTextLabel?.text = indexPath.description //description은 현재 섹션의 몇번째 row인지 2차원 배열형태로 출력해준다.
         return cell
     }
 
