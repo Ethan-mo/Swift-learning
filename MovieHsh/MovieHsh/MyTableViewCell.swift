@@ -9,7 +9,11 @@ import UIKit
 
 class MyTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var movieName: UILabel!
+    @IBOutlet weak var movieName: UILabel!      // 영화이름
+    @IBOutlet weak var movieAudiCnt: UILabel!   //관람객 수
+    @IBOutlet weak var movieAudiAcc: UILabel!   //누적관람객 수
+    @IBOutlet weak var MovieRank: UILabel!      //순위
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

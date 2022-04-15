@@ -18,13 +18,14 @@ struct BoxOfficeResult: Codable{
 }
 struct DailyBoxOfficeList: Codable{
     let movieNm: String
+    let audiAcc: String
     let audiCnt: String
 }
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var movieData: MovieData?
     @IBOutlet weak var table: UITableView!
-    let movieURL = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=4f9b60b506fdae876be3f25d2a90d2cc&targetDt=20220413" // 반드시 뒤에 s 붙이기
+    var movieURL = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=4f9b60b506fdae876be3f25d2a90d2cc&targetDt=" // 반드시 뒤에 s 붙이기
     // IOS9 부터 외부 네트워크와 관련된 보안 규칙이 신설
     // 네트워크 객체를 사용해서 SSL보안프로토콜을 사용하지 않는 네트워크에 접속하려면, info.plist 파일에 설정을 추가해주어야 함
     // 방법, 1) [info.plist] 2) [App Transport Security Settings] 3)하위 폴더에 [Allow Arbitrary Loads] 4) [No]를 [Yes]로 변경
@@ -38,7 +39,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
         table.delegate = self
         table.dataSource = self
+        movieURL += makeYesterdayString()
+        print(movieURL)
         getData() // URL과 관련
+    }
+    func makeYesterdayString() -> String{ // 오늘 날짜를 YYYYMMDD 형식으로 출력해주는 함수
+        let 현재시간 = Calendar .current.date(byAdding: .day, value: -1, to: Date())!
+        let 시간폼 = DateFormatter()
+        시간폼.dateFormat = "yyyyMMdd"
+        return 시간폼.string(from: 현재시간)
     }
     func getData(){
         if let url = URL(string:movieURL){ // Optional Binding -> 넘겨받은 URL형식이 잘못되었을 경우를 생각하여 옵셔널로
@@ -77,7 +86,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyTableViewCell
+            cell.MovieRank.text = String(indexPath.row + 1)
             cell.movieName.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].movieNm
+            cell.movieAudiCnt.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiCnt
+            cell.movieAudiAcc.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiAcc
             //print(indexPath.description, separator: " ", terminator: " ")//단순히 cell을 출력할때, 지정된 크기만큼 작업이 수행됨을 알아보기위한 코드
             return cell
         }
@@ -86,7 +98,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return 1
         }
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            print(name[indexPath.row])
+            print("현재 \(movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].movieNm)영화의 관람객은 :\(movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiCnt)명 입니다.")
         }
     }
     
