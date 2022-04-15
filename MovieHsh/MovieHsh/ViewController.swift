@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func getData(){
         if let url = URL(string:movieURL){ // Optional Binding -> 넘겨받은 URL형식이 잘못되었을 경우를 생각하여 옵셔널로
-            
+            let session = URLSession(configuration: .default) // 일은 세션에서 수행
         }
     }
 
